@@ -1,0 +1,13 @@
+#!/bin/bash
+now=$(date +"%m_%d_%Y")
+cp  byod_weekly.png /root/APM_WEEKLY_REPORTS/byod_weekly_$now.png
+mv byod_weekly.png /root/REPORTING/UYOD/byod_weekly_$now.png
+#cp RBCOSW1_DWDM_usage_weekly.png  REPORTING/DWDM/RBCOSW1_DWDM_usage_weekly_$now.png
+#cp RBCOSW1_DWDM_usage_CM_weekly.png  REPORTING/DWDM/RBCOSW1_DWDM_usage_CM_weekly_$now.png
+#cp RBCOSW1_DWDM_usage_MC_weekly.png  REPORTING/DWDM/RBCOSW1_DWDM_usage_MC_weekly_$now.png
+#cp RBDMZSW1_DWDM_usage_weekly.png  REPORTING/DWDM/RBDMZSW1_DWDM_usage_weekly_$now.png
+#cp RBDMZSW1_DWDM_usage_CM_weekly.png  REPORTING/DWDM/RBDMZSW1_DWDM_usage_CM_weekly_$now.png
+#cp RBDMZSW1_DWDM_usage_MC_weekly.png  REPORTING/DWDM/RBDMZSW1_DWDM_usage_MC_weekly_$now.png
+#cp INTERNET_usage_weekly.png REPORTING/INTERNET/INTERNET_usage_weekly$now.png
+#cp BGCBDGW2_INTERNET_usage_weekly.png REPORTING/INTERNET/BGCBDGW2_INTERNET_usage_weekly$now.png
+#cp MESBDGW1_INTERNET_usage_weekly.png REPORTING/INTERNET/MESBDGW1_INTERNET_usage_weekly$now.png

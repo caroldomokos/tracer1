@@ -1,0 +1,186 @@
+#!/bin/bash
+now=$(date +"%m_%d_%Y")
+STARTTIME=$(date +%s)
+# Count how many interfaces on RBACSW1 have the word FREE (case sensitive) in the description. Only do it for the GB interfaces
+# slot 1 is 1 to 48; slot 2 is 66-113; slot 3 131-178; slot 4 is 196-243. the others are 10Gb or 40Gb or BAs, VLANS, etc..
+ACSW1_1TO_9=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' | grep FREE | wc -l)
+ACSW1_1TO_9_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' |  wc -l)
+#echo $ACSW1_1TO_9_tot
+ACSW1_10_TO_39=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | grep FREE | wc -l)
+ACSW1_10_TO_39_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | wc -l)
+#echo $ACSW1_10_TO_39_tot
+ACSW1_40_TO_48=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | grep FREE | wc -l)
+ACSW1_40_TO_48_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | wc -l)
+#echo $ACSW1_40_TO_48_tot
+ACSW1_66_TO_69=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | grep FREE | wc -l)
+ACSW1_66_TO_69_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | wc -l)
+#echo $ACSW1_66_TO_69_tot
+ACSW1_70_TO_99=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | grep FREE | wc -l)
+ACSW1_70_TO_99_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | wc -l)
+#echo $ACSW1_70_TO_99_tot
+ACSW1_100_TO_109=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | grep FREE | wc -l)
+ACSW1_100_TO_109_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | wc -l)
+#echo $ACSW1_100_TO_109_tot
+ACSW1_110_TO_113=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | grep FREE | wc -l)
+ACSW1_110_TO_113_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | wc -l)
+#echo $ACSW1_110_TO_113_tot
+ACSW1_131_TO_139=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.13[1-9] =' | grep FREE | wc -l)
+ACSW1_131_TO_139_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.13[1-9] =' | wc -l)
+#echo $ACSW1_131_TO_139_tot
+ACSW1_140_TO_169=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.1[4-6][0-9] =' | grep FREE | wc -l)
+ACSW1_140_TO_169_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.1[4-6][0-9] =' | wc -l)
+#echo $ACSW1_140_TO_169_tot
+ACSW1_170_TO_178=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.17[0-8] =' | grep FREE | wc -l)
+ACSW1_170_TO_178_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.17[0-8] =' | wc -l)
+#echo $ACSW1_170_TO_178_tot
+ACSW1_196_TO_199=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.19[6-9] =' | grep FREE | wc -l)
+ACSW1_196_TO_199_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.19[6-9] =' | wc -l)
+#echo $ACSW1_196_TO_199_tot
+ACSW1_200_TO_239=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.2[0-3][0-9] =' | grep FREE | wc -l)
+ACSW1_200_TO_239_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.2[0-3][0-9] =' | wc -l)
+#echo $ACSW1_200_TO_239_tot
+ACSW1_240_TO_243=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.24[0-3] =' | grep FREE | wc -l)
+ACSW1_240_TO_243_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.11 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.24[0-3] =' | wc -l)
+#echo $ACSW1_240_TO_243_tot
+ACSW1_FREE=$(($ACSW1_1TO_9+$ACSW1_10_TO_39+$ACSW1_40_TO_48+$ACSW1_66_TO_69+$ACSW1_70_TO_99+$ACSW1_100_TO_109+$ACSW1_110_TO_113+$ACSW1_131_TO_139+$ACSW1_140_TO_169+$ACSW1_170_TO_178+$ACSW1_196_TO_199+$ACSW1_200_TO_239+$ACSW1_240_TO_243))
+ACSW1_tot=$(($ACSW1_1TO_9_tot+$ACSW1_10_TO_39_tot+$ACSW1_40_TO_48_tot+$ACSW1_66_TO_69_tot+$ACSW1_70_TO_99_tot+$ACSW1_100_TO_109_tot+$ACSW1_110_TO_113_tot+$ACSW1_131_TO_139_tot+$ACSW1_140_TO_169_tot+$ACSW1_170_TO_178_tot+$ACSW1_196_TO_199_tot+$ACSW1_200_TO_239_tot+$ACSW1_240_TO_243_tot))
+echo RBACSW1 has $ACSW1_FREE of $ACSW1_tot free ports
+echo  RBACSW1: $ACSW1_FREE >> FREE_Interfaces
+# Count how many interfaces on RBACSW2 have the word FREE (case sensitive) in the description. Only do it for the GB interfaces
+# slot 1 is 1 to 48; slot 2 is 66-113; slot 3 131-178; slot 4 is 196-243. the others are 10Gb or 40Gb or BAs, VLANS, etc..
+ACSW2_1TO_9=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' | grep FREE | wc -l)
+ACSW2_1TO_9_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' |  wc -l)
+#echo $ACSW2_1TO_9_tot
+ACSW2_10_TO_39=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | grep FREE | wc -l)
+ACSW2_10_TO_39_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | wc -l)
+#echo $ACSW2_10_TO_39_tot
+ACSW2_40_TO_48=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | grep FREE | wc -l)
+ACSW2_40_TO_48_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | wc -l)
+#echo $ACSW2_40_TO_48_tot
+ACSW2_66_TO_69=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | grep FREE | wc -l)
+ACSW2_66_TO_69_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | wc -l)
+#echo $ACSW2_66_TO_69_tot
+ACSW2_70_TO_99=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | grep FREE | wc -l)
+ACSW2_70_TO_99_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | wc -l)
+#echo $ACSW2_70_TO_99_tot
+ACSW2_100_TO_109=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | grep FREE | wc -l)
+ACSW2_100_TO_109_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | wc -l)
+#echo $ACSW2_100_TO_109_tot
+ACSW2_110_TO_113=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | grep FREE | wc -l)
+ACSW2_110_TO_113_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | wc -l)
+#echo $ACSW2_110_TO_113_tot
+ACSW2_131_TO_139=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.13[1-9] =' | grep FREE | wc -l)
+ACSW2_131_TO_139_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.13[1-9] =' | wc -l)
+#echo $ACSW2_131_TO_139_tot
+ACSW2_140_TO_169=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.1[4-6][0-9] =' | grep FREE | wc -l)
+ACSW2_140_TO_169_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.1[4-6][0-9] =' | wc -l)
+#echo $ACSW2_140_TO_169_tot
+ACSW2_170_TO_178=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.17[0-8] =' | grep FREE | wc -l)
+ACSW2_170_TO_178_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.17[0-8] =' | wc -l)
+#echo $ACSW2_170_TO_178_tot
+ACSW2_196_TO_199=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.19[6-9] =' | grep FREE | wc -l)
+ACSW2_196_TO_199_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.19[6-9] =' | wc -l)
+#echo $ACSW2_196_TO_199_tot
+ACSW2_200_TO_239=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.2[0-3][0-9] =' | grep FREE | wc -l)
+ACSW2_200_TO_239_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.2[0-3][0-9] =' | wc -l)
+#echo $ACSW2_200_TO_239_tot
+ACSW2_240_TO_243=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.24[0-3] =' | grep FREE | wc -l)
+ACSW2_240_TO_243_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.12 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.24[0-3] =' | wc -l)
+#echo $ACSW2_240_TO_243_tot
+ACSW2_FREE=$(($ACSW2_1TO_9+$ACSW2_10_TO_39+$ACSW2_40_TO_48+$ACSW2_66_TO_69+$ACSW2_70_TO_99+$ACSW2_100_TO_109+$ACSW2_110_TO_113+$ACSW2_131_TO_139+$ACSW2_140_TO_169+$ACSW2_170_TO_178+$ACSW2_196_TO_199+$ACSW2_200_TO_239+$ACSW2_240_TO_243))
+ACSW2_tot=$(($ACSW2_1TO_9_tot+$ACSW2_10_TO_39_tot+$ACSW2_40_TO_48_tot+$ACSW2_66_TO_69_tot+$ACSW2_70_TO_99_tot+$ACSW2_100_TO_109_tot+$ACSW2_110_TO_113_tot+$ACSW2_131_TO_139_tot+$ACSW2_140_TO_169_tot+$ACSW2_170_TO_178_tot+$ACSW2_196_TO_199_tot+$ACSW2_200_TO_239_tot+$ACSW2_240_TO_243_tot))
+echo RBACSW2 has $ACSW2_FREE of $ACSW2_tot free ports
+echo RBACSW2: $ACSW2_FREE >> FREE_Interfaces
+# Count how many interfaces on RBCOSW1 have the word FREE (case sensitive) in the description. Only do it for the 10GB interfaces
+# slot 1 is 1 to 48; slot 2 is 66-113. the others are 40Gb or BAs, VLANS, etc..
+#snmpwalk  -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18 
+COSW1_1TO_9=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' | grep FREE | wc -l)
+COSW1_1TO_9_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' |  wc -l)
+#echo $COSW1_1TO_9_tot
+COSW1_10_TO_39=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | grep FREE | wc -l)
+COSW1_10_TO_39_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | wc -l)
+#echo $COSW1_10_TO_39_tot
+COSW1_40_TO_48=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | grep FREE | wc -l)
+COSW1_40_TO_48_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | wc -l)
+#echo $COSW1_40_TO_48_tot
+COSW1_66_TO_69=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | grep FREE | wc -l)
+COSW1_66_TO_69_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | wc -l)
+#echo $COSW1_66_TO_69_tot
+COSW1_70_TO_99=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | grep FREE | wc -l)
+COSW1_70_TO_99_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | wc -l)
+#echo $COSW1_70_TO_99_tot
+COSW1_100_TO_109=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | grep FREE | wc -l)
+COSW1_100_TO_109_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | wc -l)
+#echo $COSW1_100_TO_109_tot
+COSW1_110_TO_113=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | grep FREE | wc -l)
+COSW1_110_TO_113_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.9 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | wc -l)
+#echo $COSW1_110_TO_113_tot
+COSW1_FREE=$(($COSW1_1TO_9+$COSW1_10_TO_39+$COSW1_40_TO_48+$COSW1_66_TO_69+$COSW1_70_TO_99+$COSW1_100_TO_109+$COSW1_110_TO_113))
+COSW1_tot=$(($COSW1_1TO_9_tot+$COSW1_10_TO_39_tot+$COSW1_40_TO_48_tot+$COSW1_66_TO_69_tot+$COSW1_70_TO_99_tot+$COSW1_100_TO_109_tot+$COSW1_110_TO_113_tot))
+echo RBCOSW1 has $COSW1_FREE of $COSW1_tot free ports
+echo RBCOSW1 has $COSW1_FREE ports >> FREE_Interfaces
+# Count how many interfaces on RBCOSW2 have the word FREE (case sensitive) in the description. Only do it for the 10GB interfaces
+# slot 1 is 1 to 48; slot 2 is 66-113. the others are 40Gb or BAs, VLANS, etc..
+# snmpwalk  -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18 > RBCOSW2-FREE-PORTS
+COSW2_1TO_9=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' | grep FREE | wc -l)
+COSW2_1TO_9_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-9] =' |  wc -l)
+#echo $COSW2_1TO_9_tot
+COSW2_10_TO_39=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | grep FREE | wc -l)
+COSW2_10_TO_39_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[1-3][0-9] =' | wc -l)
+#echo $COSW2_10_TO_39_tot
+COSW2_40_TO_48=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | grep FREE | wc -l)
+COSW2_40_TO_48_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[4][0-8] =' | wc -l)
+#echo $COSW2_40_TO_48_tot
+COSW2_66_TO_69=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | grep FREE | wc -l)
+COSW2_66_TO_69_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[6][6-9] =' | wc -l)
+#echo $COSW2_66_TO_69_tot
+COSW2_70_TO_99=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | grep FREE | wc -l)
+COSW2_70_TO_99_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.[7-9][0-9] =' | wc -l)
+#echo $COSW2_70_TO_99_tot
+COSW2_100_TO_109=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | grep FREE | wc -l)
+COSW2_100_TO_109_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.10[0-9] =' | wc -l)
+#echo $COSW2_100_TO_109_tot
+COSW2_110_TO_113=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | grep FREE | wc -l)
+COSW2_110_TO_113_tot=$(snmpwalk -v 2c -c hadd0ck0 10.26.0.10 1.3.6.1.2.1.31.1.1.1.18  | grep '3.6.1.2.1.31.1.1.1.18.11[0-3] =' | wc -l)
+#echo $COSW2_110_TO_113_tot
+COSW2_FREE=$(($COSW2_1TO_9+$COSW2_10_TO_39+$COSW2_40_TO_48+$COSW2_66_TO_69+$COSW2_70_TO_99+$COSW2_100_TO_109+$COSW2_110_TO_113))
+COSW2_tot=$(($COSW2_1TO_9_tot+$COSW2_10_TO_39_tot+$COSW2_40_TO_48_tot+$COSW2_66_TO_69_tot+$COSW2_70_TO_99_tot+$COSW2_100_TO_109_tot+$COSW2_110_TO_113_tot))
+echo RBCOSW2 has $COSW2_FREE of $COSW2_tot free ports
+echo RBCOSW2 has $COSW2_FREE ports >> FREE_Interfaces
+# Count how many interfaces on RBDMZSW1 have the word FREE (case sensitive) in the description. Only do it for the GB interfaces
+# slot 1 is 1 to 48; slot 2 is 66-113; slot 3 131-178; slot 4 is 196-243. the others are 10Gb or 40Gb or BAs, VLANS, etc..
+#snmpwalk  -v 2c -c hadd0ck0 10.26.1.5 1.3.6.1.2.1.31.1.1.1.18 > RBDMZSW1-FREE-PORTS
+DMZSW1_FREE=$(snmpwalk  -v 2c -c hadd0ck0 10.26.1.5 1.3.6.1.2.1.31.1.1.1.18 | grep .3.6.1.2.1.31.1.1.1.18.1 | grep -o FREE  | wc -l )
+echo RBDMZSW1 has $DMZSW1_FREE ports marked free
+echo RBDMZSW1 has $DMZSW1_FREE ports marked free >> FREE_Interfaces
+DMZSW1_NO_DESCRIPTION=$(snmpwalk  -v 2c -c hadd0ck0 10.26.1.5 1.3.6.1.2.1.31.1.1.1.18 | grep .3.6.1.2.1.31.1.1.1.18.1 | grep -o '\"\"' | wc -l)
+echo On RBDMZSW1 $DMZSW1_NO_DESCRIPTION ports have no description \(assume free\)
+echo On RBDMZSW1 $DMZSW1_NO_DESCRIPTION ports have no description \(assume free\) >> FREE_Interfaces
+DMZSW1_FREE_REAL=$((DMZSW1_NO_DESCRIPTION + DMZSW1_FREE))
+echo RBDMZSW1 has $DMZSW1_FREE_REAL free ports
+echo RBDMZSW1: $DMZSW1_FREE_REAL >> FREE_Interfaces
+# Count how many interfaces on RBDMZSW2 have the word FREE (case sensitive) in the description. Then count how many interfaces have the dscription 
+# "" which means empty. The snmp string is  1.3.6.1.2.1.31.1.1.1.18.1xxx for all the GB ports
+#snmpwalk  -v 2c -c hadd0ck0 10.26.1.6 1.3.6.1.2.1.31.1.1.1.18 > RBDMZSW2-FREE-PORTS
+DMZSW2_FREE=$(snmpwalk  -v 2c -c hadd0ck0 10.26.1.6 1.3.6.1.2.1.31.1.1.1.18 | grep .3.6.1.2.1.31.1.1.1.18.1 | grep -o FREE  | wc -l )
+echo RBDMZSW2 has $DMZSW2_FREE ports marked free
+echo RBDMZSW2 has $DMZSW2_FREE ports marked free >> FREE_Interfaces
+#snmpwalk  -v 2c -c hadd0ck0 10.26.1.6 1.3.6.1.2.1.2.2.1.2 > RBDMZSW2-TOTAL-PORTS
+#DMZSW2_TOTAL=$(grep -o '\"Gigabit' RBDMZSW2-TOTAL-PORTS | wc -l )
+#echo RBDMZSW2 has a capacity of $DMZSW2_TOTAL ports
+#snmpwalk  -v 2c -c hadd0ck0 10.26.1.6 1.3.6.1.2.1.31.1.1.1.18 > RBDMZSW2-INTERFACE-DESCRIPTION
+#DMZSW2_DESCRIPTION=$(grep -o  '3.6.1.2.1.31.1.1.1.18.1' RBDMZSW2-INTERFACE-DESCRIPTION | wc -l)
+#echo $DMZSW2_DESCRIPTION
+DMZSW2_NO_DESCRIPTION=$(snmpwalk  -v 2c -c hadd0ck0 10.26.1.6 1.3.6.1.2.1.31.1.1.1.18 | grep .3.6.1.2.1.31.1.1.1.18.1 | grep -o '\"\"' | wc -l)
+echo On RBDMZSW2 $DMZSW2_NO_DESCRIPTION ports have no description \(assume free\)
+echo On RBDMZSW2 $DMZSW2_NO_DESCRIPTION ports have no description \(assume free\) >> FREE_Interfaces
+DMZSW2_FREE_REAL=$((DMZSW2_NO_DESCRIPTION + DMZSW2_FREE))
+echo RBDMZSW2 has $DMZSW2_FREE_REAL free ports
+echo RBDMZSW2: $DMZSW2_FREE_REAL >> FREE_Interfaces
+ENDTIME=$(date +%s)
+echo $ENDTIME
+echo $STARTTIME
+RUNTIME=$(($ENDTIME - $STARTTIME))
+echo It took $RUNTIME to run the report
+echo It took $RUNTIME to run the report >> FREE_Interfaces
+echo Created on $now  >> FREE_Interfaces

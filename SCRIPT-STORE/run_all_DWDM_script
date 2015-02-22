@@ -1,0 +1,9 @@
+#!/bin/bash
+./interface-usage-average-percent-RBCOSW1-DWDM-script-daily
+./interface-usage-average-percent-RBDMZSW1-DWDM-script-daily
+./interface-usage-average-RBCOSW1-DWDM-script-daily
+./interface-usage-average-RBDMZSW1-DWDM-script-daily
+./interface-usage-peak-percent-RBCOSW1-DWDM-script-daily
+./interface-usage-peak-percent-RBDMZSW1-DWDM-script-daily
+./interface-usage-peak-RBCOSW1-DWDM-script-daily
+./interface-usage-peak-RBDMZSW1-DWDM-script-daily

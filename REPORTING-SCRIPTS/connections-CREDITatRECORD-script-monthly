@@ -1,0 +1,37 @@
+/usr/bin/rrdtool graph CREDITatRECORD_CONNECTIONS_monthly.png \
+--imgformat=PNG \
+--start=end-4w \
+--end=-00:00 \
+--title='Credit@Record Gamma pool member current connections' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='U' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Connections' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbviprion1_f5_webg1curconn_139.rrd":f5_WEBG1CurConn:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbviprion1_f5_webg3curconn_154.rrd":f5_WEBG3CurConn:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+LINE1:a#000000CC:"RBLWEBG1\:"  \
+GPRINT:a:LAST:"Last\:%8.0lf"  \
+GPRINT:a:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:a:MAX:"Max\:%8.0lf\n"  \
+LINE1:b#FF0000CC:"RBLWEBG3\:"  \
+GPRINT:b:LAST:"Last\:%8.0lf"  \
+GPRINT:b:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:b:MAX:"Max\:%8.0lf\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"MONTH %B":strftime \
+GPRINT:START_DATE:"from %a %d %b %Y":strftime \
+GPRINT:END_DATE:"to %a %d %b %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \
+

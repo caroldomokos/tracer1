@@ -1,0 +1,54 @@
+/usr/bin/rrdtool graph INTERNET_usage_peak_monthly.png \
+--imgformat=PNG \
+--title='Internet connection usage -peak' \
+--start=now-1h \
+--end=now \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='U' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Bits/s' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/bgcbdgw2_octet_in_225.rrd":octet_in:MAX \
+DEF:b="/var/lib/cacti/rra/bgcbdgw2_octet_in_226.rrd":octet_in:MAX \
+DEF:c="/var/lib/cacti/rra/mesbdgw1_octet_in_227.rrd":octet_in:MAX \
+DEF:d="/var/lib/cacti/rra/mesbdgw1_octet_in_228.rrd":octet_in:MAX \
+VDEF:START_DATE=b,FIRST \
+VDEF:END_DATE=b,LAST \
+CDEF:cbit=c,8,* \
+CDEF:abit=a,8,* \
+CDEF:bbit=b,8,* \
+CDEF:dbit=d,8,* \
+CDEF:ncbit=c,-1,* \
+CDEF:ndbit=d,-1,* \
+CDEF:50M=50000000,a,a,/,+ \
+CDEF:100M=100000000,a,a,/,+ \
+LINE2:abit#FF0000CC:"Carli from the Internet\:"  \
+GPRINT:abit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:abit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:abit:MAX:"Max\:%8.0lf%s\n"  \
+LINE2:bbit#00BF47:"Carli to the Internet\:"  \
+GPRINT:bbit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:bbit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:bbit:MAX:"Max\:%8.0lf%s\n"  \
+LINE2:ncbit#1598C3:"Mechelen from the Internet\:"  \
+GPRINT:cbit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:cbit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:cbit:MAX:"Max\:%8.0lf%s\n"  \
+LINE2:ndbit#000000CC:"Mechelen to the Internet\:"  \
+GPRINT:dbit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:dbit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:dbit:MAX:"Max\:%8.0lf%s\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"From %b %d":strftime \
+GPRINT:END_DATE:"to %b %d %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \
+

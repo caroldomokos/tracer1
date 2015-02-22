@@ -1,0 +1,53 @@
+/usr/bin/rrdtool graph RBDMZSW1_DWDM_peak_usage_percent_daily.png \
+--imgformat=PNG \
+--start=now-3d \
+--end=now \
+--title=' DMZ DWDM links - peak' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--alt-autoscale \
+--vertical-label='percent' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbdmzsw1_octet_in_247.rrd":octet_in:MAX \
+DEF:b="/var/lib/cacti/rra/rbdmzsw1_octet_in_248.rrd":octet_in:MAX \
+DEF:c="/var/lib/cacti/rra/rbdmzsw1_octet_in_249.rrd":octet_in:MAX \
+DEF:d="/var/lib/cacti/rra/rbdmzsw1_octet_in_250.rrd":octet_in:MAX \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+CDEF:abit=a,8,*,1000000000,/,100,* \
+CDEF:bbit=b,8,*,1000000000,/,100,*  \
+CDEF:cbit=c,8,*,1000000000,/,100,*  \
+CDEF:dbit=d,8,*,1000000000,/,100,*  \
+CDEF:nbbit=bbit,-1,* \
+CDEF:ndbit=dbit,-1,* \
+COMMENT:"From Mechelen to Carli \c" \
+LINE2:abit#000000CC:"DWDM 1 of 2\:"  \
+GPRINT:abit:LAST:"Last\:%8.0lf"  \
+GPRINT:abit:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:abit:MAX:"Max\:%8.0lf\n"  \
+LINE2:cbit#0000FC:"DWDM 2 of 2\:"  \
+GPRINT:cbit:LAST:"Last\:%8.0lf"  \
+GPRINT:cbit:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:cbit:MAX:"Max\:%8.0lf\n"  \
+COMMENT:"From Carli to Mechelen\c" \
+LINE2:nbbit#FF0000CC:"DWDM 1 of 2\:"  \
+GPRINT:bbit:LAST:"Last\:%8.0lf"  \
+GPRINT:bbit:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:bbit:MAX:"Max\:%8.0lf\n"  \
+LINE2:ndbit#00BF47:"DWDM 2 of 2\:"  \
+GPRINT:dbit:LAST:"Last\:%8.0lf"  \
+GPRINT:dbit:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:dbit:MAX:"Max\:%8.0lf\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"%A %d %b %Y":strftime \
+GPRINT:START_DATE:"from %d %b %H\:%M":strftime \
+GPRINT:END_DATE:"to %d %b %H\:%M":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \
+

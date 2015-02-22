@@ -1,0 +1,34 @@
+/usr/bin/rrdtool graph byod_weekly.png \
+--imgformat=PNG \
+--start=end-1w \
+--end=-00:00 \
+--title='RBPCvsUYOD weekly Utilization' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--alt-autoscale \
+--vertical-label='Connections' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbbigip1_RBPCv2_198.rrd":RBPCv2:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbbigip1_uyodv2_199.rrd":UYODv2:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+LINE3:a#FF0000FF:"RBPC\:"  \
+GPRINT:a:LAST:"Last\:%8.0lf"  \
+GPRINT:a:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:a:MAX:"Max\:%8.0lf\n"  \
+LINE3:b#00004DFF:"UYOD\:"  \
+GPRINT:b:LAST:"Last\:%8.0lf"  \
+GPRINT:b:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:b:MAX:"Max\:%8.0lf\n"  \
+COMMENT:" \n" \
+GPRINT:END_DATE:"WEEK %W":strftime \
+GPRINT:START_DATE:"from %a %d %b %Y":strftime \
+GPRINT:END_DATE:"to %a %d %b %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \

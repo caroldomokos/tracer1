@@ -1,0 +1,33 @@
+/usr/bin/rrdtool graph RBPRAV04_MEMORY_monthly.png \
+--imgformat=PNG \
+--start=now-4w \
+--end=now \
+--title=' RBPRAV04 MEMORY Monthly Utilization' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='100' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='percent' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbprav04_snmp_oid_393.rrd":snmp_oid:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbprav04_snmp_oid_400.rrd":snmp_oid:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+AREA:a#FF5000CC:"Memory Pressure\:"  \
+GPRINT:a:LAST:"Last\:%8.0lf%s"  \
+GPRINT:a:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:a:MAX:"Max\:%8.0lf%s\n"  \
+GPRINT:b:MIN:"Days remaining of AV license\:%8.0lf"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"From %b":strftime \
+GPRINT:END_DATE:"to %b %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \
+

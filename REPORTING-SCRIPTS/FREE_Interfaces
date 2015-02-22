@@ -1,0 +1,12 @@
+RBACSW1: 96
+RBACSW2: 95
+RBCOSW1 has 54 ports
+RBCOSW2 has 54 ports
+RBDMZSW1 has 15 ports marked free
+On RBDMZSW1 5 ports have no description (assume free)
+RBDMZSW1: 20
+RBDMZSW2 has 3 ports marked free
+On RBDMZSW2 23 ports have no description (assume free)
+RBDMZSW2: 26
+It took 91 to run the report
+Created on 02_06_2015

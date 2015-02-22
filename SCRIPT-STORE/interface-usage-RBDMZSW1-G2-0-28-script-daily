@@ -1,0 +1,38 @@
+/usr/bin/rrdtool graph RBDMZSW1_DWDM_2OF_2_daily.png \
+--imgformat=PNG \
+--start=end-1d \
+--end=now \
+--title='DMZ DWDM link 1 of 2' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='U' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Bits/s' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbdmzsw1_ds_211.rrd":rbdmzsw1_2028_in:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbdmzsw1_rbdmzsw1_2028_out_209.rrd":rbdmzsw1_2028_out:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+CDEF:abit=a,8,* \
+CDEF:bbit=b,8,* \
+LINE1:abit#000000CC:"In\:"  \
+GPRINT:abit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:abit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:abit:MAX:"Max\:%8.0lf%s\n"  \
+LINE2:bbit#FF0000CC:"Out\:"  \
+GPRINT:bbit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:bbit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:bbit:MAX:"Max\:%8.0lf%s\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"DAY %A":strftime \
+GPRINT:START_DATE:"from %a %d %b %Y %H\:%M":strftime \
+GPRINT:END_DATE:"to %a %d %b %Y %H\:%M":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \

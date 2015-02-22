@@ -1,0 +1,42 @@
+/usr/bin/rrdtool graph RBCOSW1_DWDM_usage_MC_weekly.png \
+--imgformat=PNG \
+--start=now-1w \
+--end=now-120s \
+--title='Backend DWDM links Mechelen to Carli' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='U' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Bits/s' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbcosw1_octet_in_229.rrd":octet_in:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbcosw1_octet_in_230.rrd":octet_in:AVERAGE \
+DEF:c="/var/lib/cacti/rra/rbcosw1_octet_in_231.rrd":octet_in:AVERAGE \
+DEF:d="/var/lib/cacti/rra/rbcosw1_octet_in_232.rrd":octet_in:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+CDEF:abit=a,8,* \
+CDEF:bbit=b,8,* \
+CDEF:cbit=c,8,* \
+CDEF:dbit=d,8,* \
+LINE2:abit#FF0000CC:"DWDM 1\:"  \
+GPRINT:abit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:abit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:abit:MAX:"Max\:%8.0lf%s\n"  \
+LINE2:cbit#00BF47:"DWDM 2\:"  \
+GPRINT:cbit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:cbit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:cbit:MAX:"Max\:%8.0lf%s\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"%A %d %b %Y":strftime \
+GPRINT:START_DATE:"from %H\:%M":strftime \
+GPRINT:END_DATE:"to %H\:%M":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \

@@ -1,0 +1,31 @@
+/usr/bin/rrdtool graph RBNSYSFW_CONNECTIONS_monthly.png \
+--imgformat=PNG \
+--start=end-4w \
+--end=-00:00 \
+--title='RBNSYSFW Monthly Session count' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='U' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Sessions' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbfortigate_fg_syssescount_79.rrd":fg_SysSesCount_NSYS:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+AREA:a#00BF47CC:"Session count\:"  \
+GPRINT:a:LAST:"Last\:%8.0lf"  \
+GPRINT:a:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:a:MAX:"Max\:%8.0lf\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"MONTH %B":strftime \
+GPRINT:START_DATE:"from %a %d %b %Y":strftime \
+GPRINT:END_DATE:"to %a %d %b %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \

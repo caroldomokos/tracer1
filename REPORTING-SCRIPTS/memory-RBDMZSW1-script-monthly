@@ -1,0 +1,43 @@
+/usr/bin/rrdtool graph RBDMZSW1_MEMORY_monthly.png \
+--imgformat=PNG \
+--start=end-4w \
+--end=-00:00 \
+--rigid \
+--title='RBDMZSW1 MEMORY Monthly Utilization' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='100' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Percent' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbdmzsw1_io_memory_free_84.rrd":io_memory_free:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbdmzsw1_io_memory_used_85.rrd":io_memory_used:AVERAGE \
+DEF:c="/var/lib/cacti/rra/rbdmzsw1_proc_memory_free_86.rrd":proc_memory_free:AVERAGE \
+DEF:d="/var/lib/cacti/rra/rbdmzsw1_proc_memory_used_87.rrd":proc_memory_used:AVERAGE \
+CDEF:IOTOT=a,b,+ \
+CDEF:IOUSAGE=b,IOTOT,/,100,* \
+CDEF:PROCTOT=c,d,+ \
+CDEF:PROCUSAGE=d,PROCTOT,/,100,* \
+CDEF:NPROCUSAGE=PROCUSAGE,-1,* \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+AREA:IOUSAGE#FF5000CC:"IO Memory USAGE\:"  \
+GPRINT:IOUSAGE:LAST:"Last\:%8.0lf"  \
+GPRINT:IOUSAGE:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:IOUSAGE:MAX:"Max\:%8.0lf\n"  \
+LINE2:PROCUSAGE#000000CC:"Processor Memory USAGE\:"  \
+GPRINT:PROCUSAGE:LAST:"Last\:%8.0lf"  \
+GPRINT:PROCUSAGE:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:PROCUSAGE:MAX:"Max\:%8.0lf\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"From %b %Y":strftime \
+GPRINT:END_DATE:"to %b %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \

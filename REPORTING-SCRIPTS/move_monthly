@@ -1,0 +1,73 @@
+#!/bin/bash
+now=$(date +"%m_%d_%Y")
+# FY BYOD
+cp  byod_monthly.png /root/APM_MONTHLY_REPORTS/byod_monthly_$now.png
+mv byod_monthly.png  /root/REPORTING/UYOD/byod_monthly_$now.png
+# CPU
+mv RBFORTIGATE_CPU_monthly.png /root/REPORTING/CPU/RBFORTIGATE_CPU_monthly$now.png
+mv RBACSW1_1_CPU_monthly.png /root/REPORTING/CPU/RBACSW1_1_CPU_monthly$now.png
+mv RBACSW1_2_CPU_monthly.png /root/REPORTING/CPU/RBACSW1_2_CPU_monthly$now.png
+mv RBACSW1_3_CPU_monthly.png /root/REPORTING/CPU/RBACSW1_3_CPU_monthly$now.png
+mv RBACSW1_4_CPU_monthly.png /root/REPORTING/CPU/RBACSW1_4_CPU_monthly$now.png
+mv RBCOSW1_1_CPU_monthly.png /root/REPORTING/CPU/RBCOSW1_1_CPU_monthly$now.png
+mv RBCOSW1_2_CPU_monthly.png /root/REPORTING/CPU/RBCOSW1_2_CPU_monthly$now.png
+mv RBCOSW2_1_CPU_monthly.png /root/REPORTING/CPU/RBCOSW2_1_CPU_monthly$now.png
+mv RBCOSW2_2_CPU_monthly.png /root/REPORTING/CPU/RBCOSW2_2_CPU_monthly$now.png
+mv RBACSW2_1_CPU_monthly.png /root/REPORTING/CPU/RBACSW2_1_CPU_monthly$now.png
+mv RBACSW2_2_CPU_monthly.png /root/REPORTING/CPU/RBACSW2_2_CPU_monthly$now.png
+mv RBACSW2_3_CPU_monthly.png /root/REPORTING/CPU/RBACSW2_3_CPU_monthly$now.png
+mv RBACSW2_4_CPU_monthly.png /root/REPORTING/CPU/RBACSW2_4_CPU_monthly$now.png
+mv RBDMZSW1_CPU_monthly.png /root/REPORTING/CPU/RBDMZSW1_CPU_monthly$now.png
+mv RBDMZSW2_CPU_monthly.png /root/REPORTING/CPU/RBDMZSW2_CPU_monthly$now.png
+mv RBPRAV03_CPU_monthly.png /root/REPORTING/CPU/RBPRAV03_CPU_monthly$now.png
+mv RBPRAV04_CPU_monthly.png /root/REPORTING/CPU/RBPRAV04_CPU_monthly$now.png
+mv RBPRSG03_CPU_monthly.png /root/REPORTING/CPU/RBPRSG03_CPU_monthly$now.png
+mv RBPRSG04_CPU_monthly.png /root/REPORTING/CPU/RBPRSG04_CPU_monthly$now.png
+
+# MEMORY
+mv RBFORTIGATE_MEMORY_monthly.png /root/REPORTING/MEMORY/RBFORTIGATE_MEMORY_monthly$now.png
+mv RBACSW1_1_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW1_1_MEMORY_monthly$now.png
+mv RBACSW1_2_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW1_2_MEMORY_monthly$now.png
+mv RBACSW1_3_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW1_3_MEMORY_monthly$now.png
+mv RBACSW1_4_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW1_4_MEMORY_monthly$now.png
+mv RBACSW2_1_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW2_1_MEMORY_monthly$now.png
+mv RBACSW2_2_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW2_2_MEMORY_monthly$now.png
+mv RBACSW2_3_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW2_3_MEMORY_monthly$now.png
+mv RBACSW2_4_MEMORY_monthly.png /root/REPORTING/MEMORY/RBACSW2_4_MEMORY_monthly$now.png
+mv RBCOSW1_1_MEMORY_monthly.png /root/REPORTING/MEMORY/RBCOSW1_1_MEMORY_monthly$now.png
+mv RBCOSW1_2_MEMORY_monthly.png /root/REPORTING/MEMORY/RBCOSW1_2_MEMORY_monthly$now.png
+mv RBCOSW2_1_MEMORY_monthly.png /root/REPORTING/MEMORY/RBCOSW2_1_MEMORY_monthly$now.png
+mv RBCOSW2_2_MEMORY_monthly.png /root/REPORTING/MEMORY/RBCOSW2_2_MEMORY_monthly$now.png
+mv RBPRSG03_MEMORY_monthly.png /root/REPORTING/MEMORY/RBPRSG03_MEMORY_monthly$now.png
+mv RBPRSG04_MEMORY_monthly.png /root/REPORTING/MEMORY/RBPRSG04_MEMORY_monthly$now.png
+mv RBPRAV03_MEMORY_monthly.png /root/REPORTING/MEMORY/RBPRAV03_MEMORY_monthly$now.png
+mv RBPRAV04_MEMORY_monthly.png /root/REPORTING/MEMORY/RBPRAV04_MEMORY_monthly$now.png
+mv RBDMZSW1_MEMORY_monthly.png /root/REPORTING/MEMORY/RBDMZSW1_MEMORY_monthly$now.png
+mv RBDMZSW2_MEMORY_monthly.png /root/REPORTING/MEMORY/RBDMZSW2_MEMORY_monthly$now.png
+
+
+# FIREWALL SESSIONS
+mv RBMGMTFW_CONNECTIONS_monthly.png /root/REPORTING/SESSIONS/RBMGMTFW_CONNECTIONS_monthly$now.png
+mv RBNINTFW_CONNECTIONS_monthly.png /root/REPORTING/SESSIONS/RBNINTFW_CONNECTIONS_monthly$now.png
+mv RBPINTFW_CONNECTIONS_monthly.png /root/REPORTING/SESSIONS/RBPINTFW_CONNECTIONS_monthly$now.png
+mv RBNSYSFW_CONNECTIONS_monthly.png /root/REPORTING/SESSIONS/RBNSYSFW_CONNECTIONS_monthly$now.png
+mv RBPSYSFW_CONNECTIONS_monthly.png /root/REPORTING/SESSIONS/RBPSYSFW_CONNECTIONS_monthly$now.png
+
+# F5 CONNECTIONS
+mv RECORDatHOME_CONNECTIONS_monthly.png /root/REPORTING/CONNECTIONS/RECORDatHOME_CONNECTIONS_monthly$now.png
+mv MOBILEatRECORD_CONNECTIONS_monthly.png /root/REPORTING/CONNECTIONS/MOBILEatRECORD_CONNECTIONS_monthly$now.png
+mv CREDITatRECORD_CONNECTIONS_monthly.png /root/REPORTING/CONNECTIONS/CREDITatRECORD_CONNECTIONS_monthly$now.png
+mv RECORDatOFFICE_CONNECTIONS_monthly.png /root/REPORTING/CONNECTIONS/RECORDatOFFICE_CONNECTIONS_monthly$now.png
+mv B2O_CONNECTIONS_monthly.png /root/REPORTING/CONNECTIONS/B2O_CONNECTIONS_monthly$now.png
+
+# INTERNET
+mv INTERNET_usage_monthly.png /root/REPORTING/INTERNET/INTERNET_usage_monthly$now.png
+mv INTERNET_usage_peak_monthly.png /root/REPORTING/INTERNET/INTERNET_usage_peak_monthly$now.png
+# DWDM
+mv RBCOSW1_DWDM_average_percent_usage_monthly.png  /root/REPORTING/DWDM/RBCOSW1_DWDM_average_percent_usage_monthly$now.png
+mv RBCOSW1_DWDM_peak_usage_percent_monthly.png /root/REPORTING/DWDM/RBCOSW1_DWDM_peak_usage_percent_monthly$now.png
+mv RBDMZSW1_DWDM_average_usage_percent_monthly.png /root/REPORTING/DWDM/RBDMZSW1_DWDM_average_usage_percent_monthly$now.png
+mv RBDMZSW1_DWDM_peak_usage_percent_monthly.png  /root/REPORTING/DWDM/RBDMZSW1_DWDM_peak_usage_percent_monthly.png$now.png
+
+# FREE SWITCH PORTS
+mv FREE_Interfaces /root/REPORTING/SWITCH/FREE_Interfaces$now

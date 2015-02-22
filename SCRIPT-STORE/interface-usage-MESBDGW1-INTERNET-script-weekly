@@ -1,0 +1,41 @@
+/usr/bin/rrdtool graph MESBDGW1_INTERNET_usage_weekly.png \
+--imgformat=PNG \
+--start=now-1w \
+--end=now-120s \
+--title=' Mechelen internet connection usage' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='U' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Bits/s' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/mesbdgw1_octet_in_227.rrd":octet_in:AVERAGE \
+DEF:b="/var/lib/cacti/rra/mesbdgw1_octet_in_228.rrd":octet_in:AVERAGE \
+VDEF:START_DATE=b,FIRST \
+VDEF:END_DATE=b,LAST \
+CDEF:bbit=b,8,* \
+CDEF:abit=a,8,* \
+CDEF:50M=50000000,a,a,/,+ \
+CDEF:100M=100000000,a,a,/,+ \
+LINE2:abit#FF0000CC:"From the Internet\:"  \
+GPRINT:abit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:abit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:abit:MAX:"Max\:%8.0lf%s\n"  \
+LINE2:bbit#00BF47:"To the Internet\:"  \
+GPRINT:bbit:LAST:"Last\:%8.0lf%s"  \
+GPRINT:bbit:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:bbit:MAX:"Max\:%8.0lf%s\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"%A %d %b %Y":strftime \
+GPRINT:START_DATE:"from %H\:%M":strftime \
+GPRINT:END_DATE:"to %H\:%M":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \
+

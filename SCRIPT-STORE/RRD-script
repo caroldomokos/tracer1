@@ -1,0 +1,13 @@
+#!/usr/bin/rrdcgi
+ <HTML>
+ <HEAD><TITLE>RRDCGI Demo</TITLE></HEAD>
+ <BODY>
+ <H1>RRDCGI Example Page</H1>
+ <P>
+ <RRD::GRAPH demo.png --lazy --title="APM connections"
+          DEF:cel=/var/lib/cacti/rra/rbbigip1_f5_apm_pool_uyod_as_193.rrd:f5_apm_pool_uyod_as:AVERAGE
+          LINE2:cel#00a000:"Connections">
+
+ </P>
+ </BODY>
+ </HTML>

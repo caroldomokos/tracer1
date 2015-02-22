@@ -1,0 +1,32 @@
+/usr/bin/rrdtool graph RBDMZSW2_CPU_monthly.png \
+--imgformat=PNG \
+--start=end-4w \
+--end=-00:00 \
+--rigid \
+--title='RBDMZSW2 CPU Monthly Utilization' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='100' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='Percent' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbdmzsw2_5min_cpu_382.rrd":5min_cpu:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+AREA:a#FF5000CC:"CPU USAGE\:"  \
+GPRINT:a:LAST:"Last\:%8.0lf"  \
+GPRINT:a:AVERAGE:"Average\:%8.0lf"  \
+GPRINT:a:MAX:"Max\:%8.0lf\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"From %b %Y":strftime \
+GPRINT:END_DATE:"to %b %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \
+

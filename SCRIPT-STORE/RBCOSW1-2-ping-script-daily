@@ -1,0 +1,45 @@
+/usr/bin/rrdtool graph RBCOSW_ping.png \
+--imgformat=PNG \
+--start=now-3d \
+--end=now-120s \
+--title='Core switch response time' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='U' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='miliseconds' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbcosw1_ping_237.rrd":ping:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbcosw2_ping_238.rrd":ping:AVERAGE \
+DEF:c="/var/lib/cacti/rra/hqwfsyi1_ping_239.rrd":ping:AVERAGE \
+VDEF:START_DATE=b,FIRST \
+VDEF:END_DATE=b,LAST \
+CDEF:abit=a,8,* \
+CDEF:bbit=b,8,* \
+CDEF:50M=50000000,a,a,/,+ \
+CDEF:100M=100000000,a,a,/,+ \
+LINE2:a#FF0000CC:"RBCOSW1\:"  \
+GPRINT:a:LAST:"Last\:%8.3lf"  \
+GPRINT:a:AVERAGE:"Average\:%8.3lf"  \
+GPRINT:a:MAX:"Max\:%8.3lf\n"  \
+LINE2:b#00BF47:"RBCOSW2\:"  \
+GPRINT:b:LAST:"Last\:%8.3lf"  \
+GPRINT:b:AVERAGE:"Average\:%8.3lf"  \
+GPRINT:b:MAX:"Max\:%8.3lf\n"  \
+LINE2:c#0000FC:"HQWFSYI1\:"  \
+GPRINT:c:LAST:"Last\:%8.3lf"  \
+GPRINT:c:AVERAGE:"Average\:%8.3lf"  \
+GPRINT:c:MAX:"Max\:%8.3lf\n"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"%A %d %b %Y":strftime \
+GPRINT:START_DATE:"from %H\:%M":strftime \
+GPRINT:END_DATE:"to %H\:%M":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \

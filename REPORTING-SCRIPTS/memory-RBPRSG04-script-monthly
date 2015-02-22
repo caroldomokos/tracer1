@@ -1,0 +1,37 @@
+/usr/bin/rrdtool graph RBPRSG04_MEMORY_monthly.png \
+--imgformat=PNG \
+--start=now-4w \
+--end=now \
+--title=' RBPRSG04 MEMORY Monthly Utilization' \
+--base=1000 \
+--height=120 \
+--width=500 \
+--upper-limit='100' \
+--lower-limit='0' \
+--alt-autoscale \
+--vertical-label='percent' \
+--slope-mode \
+--font TITLE:10: \
+--font AXIS:7: \
+--font LEGEND:8: \
+--font UNIT:7: \
+DEF:a="/var/lib/cacti/rra/rbprsg04_snmp_oid_388.rrd":snmp_oid:AVERAGE \
+DEF:b="/var/lib/cacti/rra/rbprsg04_snmp_oid_398.rrd":snmp_oid:AVERAGE \
+DEF:c="/var/lib/cacti/rra/rbprsg04_snmp_oid_405.rrd":snmp_oid:AVERAGE \
+DEF:d="/var/lib/cacti/rra/rbprsg04_snmp_oid_389.rrd":snmp_oid:AVERAGE \
+VDEF:START_DATE=a,FIRST \
+VDEF:END_DATE=a,LAST \
+AREA:a#FF5000CC:"Memory Pressure\:"  \
+GPRINT:a:LAST:"Last\:%8.0lf%s"  \
+GPRINT:a:AVERAGE:"Average\:%8.0lf%s"  \
+GPRINT:a:MAX:"Max\:%8.0lf%s\n"  \
+GPRINT:c:LAST:"Available memory\:%8.3lf%s"  \
+GPRINT:b:LAST:"Used by System\:%8.3lf%s"  \
+GPRINT:d:LAST:"Used by Cache\:%8.3lf%s"  \
+COMMENT:" \n" \
+GPRINT:START_DATE:"From %b":strftime \
+GPRINT:END_DATE:"to %b %Y":strftime  \
+COMMENT:" \n" \
+COMMENT:"  Created on \: $(date "+%F %T" | sed 's/:/\\:/g')\r" \
+COMMENT:"Contact carol.domokos@hp.com" \
+
