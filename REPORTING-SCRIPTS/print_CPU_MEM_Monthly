@@ -1,0 +1,263 @@
+/usr/bin/rrdtool graph CPU_MEM__print.png \
+--start=now-4w \
+--end=now \
+DEF:rbforticpuav="/var/lib/cacti/rra/rbfortigate_fg_syscpuusage_70.rrd":fg_SysCpuUsage:AVERAGE \
+DEF:rbforticpumax="/var/lib/cacti/rra/rbfortigate_fg_syscpuusage_70.rrd":fg_SysCpuUsage:MAX \
+DEF:rbfortimemav="/var/lib/cacti/rra/rbfortigate_fg_sysmemusage_71.rrd":fg_SysMemUsage:AVERAGE \
+DEF:rbfortimemmax="/var/lib/cacti/rra/rbfortigate_fg_sysmemusage_71.rrd":fg_SysMemUsage:MAX \
+DEF:rbcosw1_1cpuav="/var/lib/cacti/rra/rbcosw1_snmp_oid_30.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw1_1cpumax="/var/lib/cacti/rra/rbcosw1_snmp_oid_30.rrd":snmp_oid:MAX \
+DEF:rbcosw1_1memav="/var/lib/cacti/rra/rbcosw1_snmp_oid_32.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw1_1memmax="/var/lib/cacti/rra/rbcosw1_snmp_oid_32.rrd":snmp_oid:MAX \
+DEF:rbcosw1_2cpuav="/var/lib/cacti/rra/rbcosw1_snmp_oid_31.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw1_2cpumax="/var/lib/cacti/rra/rbcosw1_snmp_oid_31.rrd":snmp_oid:MAX \
+DEF:rbcosw1_2memav="/var/lib/cacti/rra/rbcosw1_snmp_oid_33.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw1_2memmax="/var/lib/cacti/rra/rbcosw1_snmp_oid_33.rrd":snmp_oid:MAX \
+DEF:rbcosw2_1cpuav="/var/lib/cacti/rra/rbcosw2_snmp_oid_34.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw2_1cpumax="/var/lib/cacti/rra/rbcosw2_snmp_oid_34.rrd":snmp_oid:MAX \
+DEF:rbcosw2_1memav="/var/lib/cacti/rra/rbcosw2_snmp_oid_36.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw2_1memmax="/var/lib/cacti/rra/rbcosw2_snmp_oid_36.rrd":snmp_oid:MAX \
+DEF:rbcosw2_2cpuav="/var/lib/cacti/rra/rbcosw2_snmp_oid_35.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw2_2cpumax="/var/lib/cacti/rra/rbcosw2_snmp_oid_35.rrd":snmp_oid:MAX \
+DEF:rbcosw2_2memav="/var/lib/cacti/rra/rbcosw2_snmp_oid_37.rrd":snmp_oid:AVERAGE \
+DEF:rbcosw2_2memmax="/var/lib/cacti/rra/rbcosw2_snmp_oid_37.rrd":snmp_oid:MAX \
+DEF:rbacsw1_1cpuav="/var/lib/cacti/rra/rbacsw1_snmp_oid_22.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_1cpumax="/var/lib/cacti/rra/rbacsw1_snmp_oid_22.rrd":snmp_oid:MAX \
+DEF:rbacsw1_1memav="/var/lib/cacti/rra/rbacsw1_snmp_oid_26.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_1memmax="/var/lib/cacti/rra/rbacsw1_snmp_oid_26.rrd":snmp_oid:MAX \
+DEF:rbacsw1_2cpuav="/var/lib/cacti/rra/rbacsw1_snmp_oid_23.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_2cpumax="/var/lib/cacti/rra/rbacsw1_snmp_oid_23.rrd":snmp_oid:MAX \
+DEF:rbacsw1_2memav="/var/lib/cacti/rra/rbacsw1_snmp_oid_27.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_2memmax="/var/lib/cacti/rra/rbacsw1_snmp_oid_27.rrd":snmp_oid:MAX \
+DEF:rbacsw1_3cpuav="/var/lib/cacti/rra/rbacsw1_snmp_oid_24.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_3cpumax="/var/lib/cacti/rra/rbacsw1_snmp_oid_24.rrd":snmp_oid:MAX \
+DEF:rbacsw1_3memav="/var/lib/cacti/rra/rbacsw1_snmp_oid_28.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_3memmax="/var/lib/cacti/rra/rbacsw1_snmp_oid_28.rrd":snmp_oid:MAX \
+DEF:rbacsw1_4cpuav="/var/lib/cacti/rra/rbacsw1_snmp_oid_25.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_4cpumax="/var/lib/cacti/rra/rbacsw1_snmp_oid_25.rrd":snmp_oid:MAX \
+DEF:rbacsw1_4memav="/var/lib/cacti/rra/rbacsw1_snmp_oid_29.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw1_4memmax="/var/lib/cacti/rra/rbacsw1_snmp_oid_29.rrd":snmp_oid:MAX \
+DEF:rbacsw2_1cpuav="/var/lib/cacti/rra/rbacsw2_snmp_oid_13.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_1cpumax="/var/lib/cacti/rra/rbacsw2_snmp_oid_13.rrd":snmp_oid:MAX \
+DEF:rbacsw2_1memav="/var/lib/cacti/rra/rbacsw2_snmp_oid_16.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_1memmax="/var/lib/cacti/rra/rbacsw2_snmp_oid_16.rrd":snmp_oid:MAX \
+DEF:rbacsw2_2cpuav="/var/lib/cacti/rra/rbacsw2_snmp_oid_14.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_2cpumax="/var/lib/cacti/rra/rbacsw2_snmp_oid_14.rrd":snmp_oid:MAX \
+DEF:rbacsw2_2memav="/var/lib/cacti/rra/rbacsw2_snmp_oid_19.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_2memmax="/var/lib/cacti/rra/rbacsw2_snmp_oid_19.rrd":snmp_oid:MAX \
+DEF:rbacsw2_3cpuav="/var/lib/cacti/rra/localhost_snmp_oid_17.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_3cpumax="/var/lib/cacti/rra/localhost_snmp_oid_17.rrd":snmp_oid:MAX \
+DEF:rbacsw2_3memav="/var/lib/cacti/rra/rbacsw2_snmp_oid_20.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_3memmax="/var/lib/cacti/rra/rbacsw2_snmp_oid_20.rrd":snmp_oid:MAX \
+DEF:rbacsw2_4cpuav="/var/lib/cacti/rra/localhost_snmp_oid_18.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_4cpumax="/var/lib/cacti/rra/localhost_snmp_oid_18.rrd":snmp_oid:MAX \
+DEF:rbacsw2_4memav="/var/lib/cacti/rra/rbacsw2_snmp_oid_21.rrd":snmp_oid:AVERAGE \
+DEF:rbacsw2_4memmax="/var/lib/cacti/rra/rbacsw2_snmp_oid_21.rrd":snmp_oid:MAX \
+DEF:rbdmzsw1cpuav="/var/lib/cacti/rra/rbdmzsw1_5min_cpu_88.rrd":5min_cpu:AVERAGE \
+DEF:rbdmzsw1cpumax="/var/lib/cacti/rra/rbdmzsw1_5min_cpu_88.rrd":5min_cpu:MAX \
+DEF:rbdmzsw1memiofreeav="/var/lib/cacti/rra/rbdmzsw1_io_memory_free_84.rrd":io_memory_free:AVERAGE \
+DEF:rbdmzsw1memiofreemax="/var/lib/cacti/rra/rbdmzsw1_io_memory_free_84.rrd":io_memory_free:MAX \
+DEF:rbdmzsw1memprocfreeav="/var/lib/cacti/rra/rbdmzsw1_proc_memory_free_86.rrd":proc_memory_free:AVERAGE \
+DEF:rbdmzsw1memprocfreemax="/var/lib/cacti/rra/rbdmzsw1_proc_memory_free_86.rrd":proc_memory_free:MAX \
+DEF:rbdmzsw1memiousedav="/var/lib/cacti/rra/rbdmzsw1_io_memory_used_85.rrd":io_memory_used:AVERAGE \
+DEF:rbdmzsw1memiousedmax="/var/lib/cacti/rra/rbdmzsw1_io_memory_used_85.rrd":io_memory_used:MAX \
+DEF:rbdmzsw1memprocusedav="/var/lib/cacti/rra/rbdmzsw1_proc_memory_free_86.rrd":proc_memory_free:AVERAGE \
+DEF:rbdmzsw1memprocusedmax="/var/lib/cacti/rra/rbdmzsw1_proc_memory_free_86.rrd":proc_memory_free:MAX \
+CDEF:rbdmzsw1memusedtot=rbdmzsw1memprocusedav,rbdmzsw1memiousedav,+ \
+CDEF:rbdmzsw1memfreetot=rbdmzsw1memprocfreeav,rbdmzsw1memiofreeav,+ \
+CDEF:rbdmzsw1memusedpercentageav=rbdmzsw1memiousedav,rbdmzsw1memprocusedav,+,rbdmzsw1memusedtot,rbdmzsw1memfreetot,+,/,100,* \
+CDEF:rbdmzsw1memusedtotmax=rbdmzsw1memprocusedmax,rbdmzsw1memiousedmax,+ \
+CDEF:rbdmzsw1memfreetotmax=rbdmzsw1memprocfreemax,rbdmzsw1memiofreemax,+ \
+CDEF:rbdmzsw1memusedpercentagemax=rbdmzsw1memiousedmax,rbdmzsw1memprocusedmax,+,rbdmzsw1memusedtotmax,rbdmzsw1memfreetotmax,+,/,100,* \
+DEF:rbdmzsw2cpuav="/var/lib/cacti/rra/rbdmzsw2_5min_cpu_381.rrd":5min_cpu:AVERAGE \
+DEF:rbdmzsw2cpumax="/var/lib/cacti/rra/rbdmzsw2_5min_cpu_381.rrd":5min_cpu:MAX \
+DEF:rbdmzsw2memprocusedav="/var/lib/cacti/rra/rbdmzsw2_proc_memory_used_404.rrd":proc_memory_used:AVERAGE \
+DEF:rbdmzsw2memprocusedmax="/var/lib/cacti/rra/rbdmzsw2_proc_memory_used_404.rrd":proc_memory_used:MAX \
+DEF:rbdmzsw2memprocfreeav="/var/lib/cacti/rra/rbdmzsw2_proc_memory_free_403.rrd":proc_memory_free:AVERAGE \
+DEF:rbdmzsw2memprocfreemax="/var/lib/cacti/rra/rbdmzsw2_proc_memory_free_403.rrd":proc_memory_free:MAX \
+DEF:rbdmzsw2memiousedav="/var/lib/cacti/rra/rbdmzsw2_io_memory_used_402.rrd":io_memory_used:AVERAGE \
+DEF:rbdmzsw2memiousedmax="/var/lib/cacti/rra/rbdmzsw2_io_memory_used_402.rrd":io_memory_used:MAX \
+DEF:rbdmzsw2memiofreeav="/var/lib/cacti/rra/rbdmzsw2_io_memory_free_401.rrd":io_memory_free:AVERAGE \
+DEF:rbdmzsw2memiofreemax="/var/lib/cacti/rra/rbdmzsw2_io_memory_free_401.rrd":io_memory_free:MAX \
+CDEF:rbdmzsw2memusedtot=rbdmzsw2memprocusedav,rbdmzsw2memiousedav,+ \
+CDEF:rbdmzsw2memfreetot=rbdmzsw2memprocfreeav,rbdmzsw2memiofreeav,+ \
+CDEF:rbdmzsw2memusedpercentageav=rbdmzsw2memiousedav,rbdmzsw2memprocusedav,+,rbdmzsw2memusedtot,rbdmzsw2memfreetot,+,/,100,* \
+CDEF:rbdmzsw2memusedtotmax=rbdmzsw2memprocusedmax,rbdmzsw2memiousedmax,+ \
+CDEF:rbdmzsw2memfreetotmax=rbdmzsw2memprocfreemax,rbdmzsw2memiofreemax,+ \
+CDEF:rbdmzsw2memusedpercentagemax=rbdmzsw2memiousedmax,rbdmzsw2memprocusedmax,+,rbdmzsw2memusedtotmax,rbdmzsw2memfreetotmax,+,/,100,* \
+DEF:rbbigip1cpuav="/var/lib/cacti/rra/nw-rbbigip1_snmp_oid_431.rrd":snmp_oid:AVERAGE \
+DEF:rbbigip1cpumax="/var/lib/cacti/rra/nw-rbbigip1_snmp_oid_431.rrd":snmp_oid:MAX \
+DEF:rbbigip1memusedav="/var/lib/cacti/rra/nw-rbbigip1_bigip_tmm_mem_used_418.rrd":bigip_tmm_mem_used:AVERAGE \
+DEF:rbbigip1memusedmax="/var/lib/cacti/rra/nw-rbbigip1_bigip_tmm_mem_used_418.rrd":bigip_tmm_mem_used:MAX \
+DEF:rbbigip1memtotav="/var/lib/cacti/rra/nw-rbbigip1_bigip_tmm_mem_tot_417.rrd":bigip_tmm_mem_tot:AVERAGE \
+DEF:rbbigip1memtotmax="/var/lib/cacti/rra/nw-rbbigip1_bigip_tmm_mem_tot_417.rrd":bigip_tmm_mem_tot:MAX \
+CDEF:rbbigip1memusedpercentageav=rbbigip1memusedav,rbbigip1memtotav,/,100,* \
+CDEF:rbbigip1memusedpercentagemax=rbbigip1memusedmax,rbbigip1memtotmax,/,100,* \
+DEF:rbbigip2cpuav="/var/lib/cacti/rra/nw-rbbigip2_snmp_oid_432.rrd":snmp_oid:AVERAGE \
+DEF:rbbigip2cpumax="/var/lib/cacti/rra/nw-rbbigip2_snmp_oid_432.rrd":snmp_oid:MAX \
+DEF:rbbigip2memusedav="/var/lib/cacti/rra/nw-rbbigip2_bigip_tmm_mem_used_425.rrd":bigip_tmm_mem_used:AVERAGE \
+DEF:rbbigip2memusedmax="/var/lib/cacti/rra/nw-rbbigip2_bigip_tmm_mem_used_425.rrd":bigip_tmm_mem_used:MAX \
+DEF:rbbigip2memtotav="/var/lib/cacti/rra/nw-rbbigip2_bigip_tmm_mem_tot_424.rrd":bigip_tmm_mem_tot:AVERAGE \
+DEF:rbbigip2memtotmax="/var/lib/cacti/rra/nw-rbbigip2_bigip_tmm_mem_tot_424.rrd":bigip_tmm_mem_tot:MAX \
+CDEF:rbbigip2memusedpercentageav=rbbigip2memusedav,rbbigip2memtotav,/,100,* \
+CDEF:rbbigip2memusedpercentagemax=rbbigip2memusedmax,rbbigip2memtotmax,/,100,* \
+DEF:rbviprion1cpuav="/var/lib/cacti/rra/nw-rbviprion1_snmp_oid_440.rrd":snmp_oid:AVERAGE \
+DEF:rbviprion1cpumax="/var/lib/cacti/rra/nw-rbviprion1_snmp_oid_440.rrd":snmp_oid:MAX \
+DEF:rbviprion1memtotav="/var/lib/cacti/rra/nw-rbviprion1_bigip_tmm_mem_tot_456.rrd":bigip_tmm_mem_tot:AVERAGE \
+DEF:rbviprion1memtotmax="/var/lib/cacti/rra/nw-rbviprion1_bigip_tmm_mem_tot_456.rrd":bigip_tmm_mem_tot:MAX \
+DEF:rbviprion1memusedav="/var/lib/cacti/rra/nw-rbviprion1_bigip_tmm_mem_used_457.rrd":bigip_tmm_mem_used:AVERAGE \
+DEF:rbviprion1memusedmax="/var/lib/cacti/rra/nw-rbviprion1_bigip_tmm_mem_used_457.rrd":bigip_tmm_mem_used:MAX \
+CDEF:rbviprion1memusedpercentageav=rbviprion1memusedav,rbviprion1memtotav,/,100,* \
+CDEF:rbviprion1memusedpercentagemax=rbviprion1memusedmax,rbviprion1memtotmax,/,100,* \
+DEF:rbviprion2cpuav="/var/lib/cacti/rra/nw-rbviprion2_snmp_oid_441.rrd":snmp_oid:AVERAGE \
+DEF:rbviprion2cpumax="/var/lib/cacti/rra/nw-rbviprion2_snmp_oid_441.rrd":snmp_oid:MAX \
+DEF:rbviprion2memtotav="/var/lib/cacti/rra/nw-rbviprion2_bigip_tmm_mem_tot_458.rrd":bigip_tmm_mem_tot:AVERAGE \
+DEF:rbviprion2memtotmax="/var/lib/cacti/rra/nw-rbviprion2_bigip_tmm_mem_tot_458.rrd":bigip_tmm_mem_tot:MAX \
+DEF:rbviprion2memusedav="/var/lib/cacti/rra/nw-rbviprion2_bigip_tmm_mem_used_459.rrd":bigip_tmm_mem_used:AVERAGE \
+DEF:rbviprion2memusedmax="/var/lib/cacti/rra/nw-rbviprion2_bigip_tmm_mem_used_459.rrd":bigip_tmm_mem_used:MAX \
+CDEF:rbviprion2memusedpercentageav=rbviprion2memusedav,rbviprion2memtotav,/,100,* \
+CDEF:rbviprion2memusedpercentagemax=rbviprion2memusedmax,rbviprion2memtotmax,/,100,* \
+DEF:rbpfrfw1cpuav="/var/lib/cacti/rra/nw-rbpfrfw1_snmp_oid_460.rrd":snmp_oid:AVERAGE \
+DEF:rbpfrfw1cpumax="/var/lib/cacti/rra/nw-rbpfrfw1_snmp_oid_460.rrd":snmp_oid:MAX \
+DEF:rbpfrfw1memtotav="/var/lib/cacti/rra/nw-rbpfrfw1_snmp_oid_461.rrd":snmp_oid:AVERAGE \
+DEF:rbpfrfw1memtotmax="/var/lib/cacti/rra/nw-rbpfrfw1_snmp_oid_461.rrd":snmp_oid:MAX \
+DEF:rbpfrfw1memfreeav="/var/lib/cacti/rra/nw-rbpfrfw1_snmp_oid_462.rrd":snmp_oid:AVERAGE \
+DEF:rbpfrfw1memfreemax="/var/lib/cacti/rra/nw-rbpfrfw1_snmp_oid_462.rrd":snmp_oid:MAX \
+CDEF:rbpfrfw1memusedpercentageav=rbpfrfw1memfreeav,rbpfrfw1memtotav,/,100,*,100,-,-1,* \
+CDEF:rbpfrfw1memusedpercentagemax=rbpfrfw1memfreemax,rbpfrfw1memtotmax,/,100,*,100,-,-1,* \
+DEF:rbpfrfw2cpuav="/var/lib/cacti/rra/nw-rbpfrfw2_snmp_oid_463.rrd":snmp_oid:AVERAGE \
+DEF:rbpfrfw2cpumax="/var/lib/cacti/rra/nw-rbpfrfw2_snmp_oid_463.rrd":snmp_oid:MAX \
+DEF:rbpfrfw2memtotav="/var/lib/cacti/rra/nw-rbpfrfw2_snmp_oid_464.rrd":snmp_oid:AVERAGE \
+DEF:rbpfrfw2memtotmax="/var/lib/cacti/rra/nw-rbpfrfw2_snmp_oid_464.rrd":snmp_oid:MAX \
+DEF:rbpfrfw2memfreeav="/var/lib/cacti/rra/nw-rbpfrfw2_snmp_oid_465.rrd":snmp_oid:AVERAGE \
+DEF:rbpfrfw2memfreemax="/var/lib/cacti/rra/nw-rbpfrfw2_snmp_oid_465.rrd":snmp_oid:MAX \
+CDEF:rbpfrfw2memusedpercentageav=rbpfrfw2memfreeav,rbpfrfw2memtotav,/,100,*,100,-,-1,* \
+CDEF:rbpfrfw2memusedpercentagemax=rbpfrfw2memfreemax,rbpfrfw2memtotmax,/,100,*,100,-,-1,* \
+DEF:rbprsg03cpuav="/var/lib/cacti/rra/rbprsg03_snmp_oid_256.rrd":snmp_oid:AVERAGE \
+DEF:rbprsg03cpumax="/var/lib/cacti/rra/rbprsg03_snmp_oid_256.rrd":snmp_oid:MAX \
+DEF:rbprsg03memav="/var/lib/cacti/rra/rbprsg03_snmp_oid_378.rrd":snmp_oid:AVERAGE \
+DEF:rbprsg03memmax="/var/lib/cacti/rra/rbprsg03_snmp_oid_378.rrd":snmp_oid:MAX \
+DEF:rbprsg04cpuav="/var/lib/cacti/rra/rbprsg04_snmp_oid_379.rrd":snmp_oid:AVERAGE \
+DEF:rbprsg04cpumax="/var/lib/cacti/rra/rbprsg04_snmp_oid_379.rrd":snmp_oid:MAX \
+DEF:rbprsg04memav="/var/lib/cacti/rra/rbprsg04_snmp_oid_388.rrd":snmp_oid:AVERAGE \
+DEF:rbprsg04memmax="/var/lib/cacti/rra/rbprsg04_snmp_oid_388.rrd":snmp_oid:MAX \
+DEF:rbprav03cpuav="/var/lib/cacti/rra/rbprav03_snmp_oid_390.rrd":snmp_oid:AVERAGE \
+DEF:rbprav03cpumax="/var/lib/cacti/rra/rbprav03_snmp_oid_390.rrd":snmp_oid:MAX \
+DEF:rbprav03memav="/var/lib/cacti/rra/rbprav03_snmp_oid_391.rrd":snmp_oid:AVERAGE \
+DEF:rbprav03memmax="/var/lib/cacti/rra/rbprav03_snmp_oid_391.rrd":snmp_oid:MAX \
+DEF:rbprav04cpuav="/var/lib/cacti/rra/rbprav04_snmp_oid_392.rrd":snmp_oid:AVERAGE \
+DEF:rbprav04cpumax="/var/lib/cacti/rra/rbprav04_snmp_oid_392.rrd":snmp_oid:MAX \
+DEF:rbprav04memav="/var/lib/cacti/rra/rbprav04_snmp_oid_393.rrd":snmp_oid:AVERAGE \
+DEF:rbprav04memmax="/var/lib/cacti/rra/rbprav04_snmp_oid_393.rrd":snmp_oid:MAX \
+DEF:bgcbdgw2cpuav="/var/lib/cacti/rra/nw-bgcbdgw2_5min_cpu_433.rrd":1min_cpu:AVERAGE \
+DEF:bgcbdgw2cpumax="/var/lib/cacti/rra/nw-bgcbdgw2_5min_cpu_433.rrd":1min_cpu:MAX \
+DEF:bgcbdgw2memfreeav="/var/lib/cacti/rra/nw-bgcbdgw2_io_memory_free_436.rrd":io_memory_free:AVERAGE \
+DEF:bgcbdgw2memfreemax="/var/lib/cacti/rra/nw-bgcbdgw2_io_memory_free_436.rrd":io_memory_free:MAX \
+DEF:bgcbdgw2memusedav="/var/lib/cacti/rra/nw-bgcbdgw2_io_memory_used_437.rrd":io_memory_used:AVERAGE \
+DEF:bgcbdgw2memusedmax="/var/lib/cacti/rra/nw-bgcbdgw2_io_memory_used_437.rrd":io_memory_used:MAX \
+CDEF:bgcbdgw2memusepercentageav=bgcbdgw2memusedav,bgcbdgw2memfreeav,bgcbdgw2memusedav,+,/,100,* \
+CDEF:bgcbdgw2memusepercentagemax=bgcbdgw2memusedmax,bgcbdgw2memfreemax,bgcbdgw2memusedmax,+,/,100,* \
+PRINT:rbforticpuav:AVERAGE:"RBFORTIGW AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbforticpumax:MAX:"RBFORTIGW PEAK CPU \:%8.2lf%s"  \
+PRINT:rbfortimemav:AVERAGE:"RBFORTIGW AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbfortimemmax:MAX:"RBFORTIGW PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw1_1cpuav:AVERAGE:"RBCOSW1_1 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbcosw1_1cpumax:MAX:"RBCOSW1_1 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbcosw1_1memav:AVERAGE:"RBCOSW1_1 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw1_1memmax:MAX:"RBCOSW1_1 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw1_2cpuav:AVERAGE:"RBCOSW1_2 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbcosw1_2cpumax:MAX:"RBCOSW1_2 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbcosw1_2memav:AVERAGE:"RBCOSW1_2 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw1_2memmax:MAX:"RBCOSW1_2 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw2_1cpuav:AVERAGE:"RBCOSW2_1 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbcosw2_1cpumax:MAX:"RBCOSW2_1 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbcosw2_1memav:AVERAGE:"RBCOSW2_1 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw2_1memmax:MAX:"RBCOSW2_1 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw2_2cpuav:AVERAGE:"RBCOSW2_2 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbcosw2_2cpumax:MAX:"RBCOSW2_2 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbcosw2_2memav:AVERAGE:"RBCOSW2_2 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbcosw2_2memmax:MAX:"RBCOSW2_2 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_1cpuav:AVERAGE:"RBACSW1_1 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_1cpumax:MAX:"RBACSW1_1 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_1memav:AVERAGE:"RBACSW1_1 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_1memmax:MAX:"RBACSW1_1 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_2cpuav:AVERAGE:"RBACSW1_2 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_2cpumax:MAX:"RBACSW1_2 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_2memav:AVERAGE:"RBACSW1_2 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_2memmax:MAX:"RBACSW1_2 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_3cpuav:AVERAGE:"RBACSW1_3 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_3cpumax:MAX:"RBACSW1_3 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_3memav:AVERAGE:"RBACSW1_3 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_3memmax:MAX:"RBACSW1_3 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_4cpuav:AVERAGE:"RBACSW1_4 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_4cpumax:MAX:"RBACSW1_4 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw1_4memav:AVERAGE:"RBACSW1_4 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw1_4memmax:MAX:"RBACSW1_4 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_1cpuav:AVERAGE:"RBACSW2_1 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_1cpumax:MAX:"RBACSW2_1 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_1memav:AVERAGE:"RBACSW2_1 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_1memmax:MAX:"RBACSW2_1 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_2cpuav:AVERAGE:"RBACSW2_2 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_2cpumax:MAX:"RBACSW2_2 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_2memav:AVERAGE:"RBACSW2_2 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_2memmax:MAX:"RBACSW2_2 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_3cpuav:AVERAGE:"RBACSW2_3 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_3cpumax:MAX:"RBACSW2_3 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_3memav:AVERAGE:"RBACSW2_3 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_3memmax:MAX:"RBACSW2_2 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_4cpuav:AVERAGE:"RBACSW2_4 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_4cpumax:MAX:"RBACSW2_4 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbacsw2_4memav:AVERAGE:"RBACSW2_4 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:rbacsw2_4memmax:MAX:"RBACSW2_4 PEAK MEMORY \:%8.2lf%s"  \
+PRINT:rbdmzsw1cpuav:AVERAGE:"RBDMZSW1 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbdmzsw1cpumax:MAX:"RBDMZSW1 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbdmzsw1memusedpercentageav:AVERAGE:"RBDMZSW1 AVERAGE MEMORY \:%8.2lf%s" \
+PRINT:rbdmzsw1memusedpercentagemax:AVERAGE:"RBDMZSW1 PEAK MEMORY \:%8.2lf%s" \
+PRINT:rbdmzsw2cpuav:AVERAGE:"RBDMZSW2 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:rbdmzsw2cpumax:MAX:"RBDMZSW2 PEAK CPU \:%8.2lf%s"  \
+PRINT:rbdmzsw2memusedpercentageav:AVERAGE:"RBDMZSW2 AVERAGE MEMORY \:%8.2lf%s" \
+PRINT:rbdmzsw2memusedpercentagemax:AVERAGE:"RBDMZSW2 PEAK MEMORY \:%8.2lf%s" \
+PRINT:rbbigip1cpuav:AVERAGE:"RBBIGIP1 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbbigip1cpumax:MAX:"RBBIGIP1 MAX CPU\:%8.2lf%s"  \
+PRINT:rbbigip1memusedpercentageav:AVERAGE:"RBBIGIP1 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbbigip1memusedpercentagemax:MAX:"RBBIGIP1 PEAK MEMORY\:%8.2lf%s" \
+PRINT:rbbigip2cpuav:AVERAGE:"RBBIGIP2 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbbigip2cpumax:MAX:"RBBIGIP2 MAX CPU\:%8.2lf%s"  \
+PRINT:rbbigip2memusedpercentageav:AVERAGE:"RBBIGIP2 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbbigip2memusedpercentagemax:MAX:"RBBIGIP2 PEAK MEMORY\:%8.2lf%s" \
+PRINT:rbviprion1cpuav:AVERAGE:"RBVIPRION1 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbviprion1cpumax:MAX:"RBVIPRION1 MAX CPU\:%8.2lf%s"  \
+PRINT:rbviprion1memusedpercentageav:AVERAGE:"RBVIPRION1 AVERAGE MEMORY \:%8.2lf%s" \
+PRINT:rbviprion1memusedpercentagemax:MAX:"RBVIPRION1 PEAK MEMORY \:%8.2lf%s" \
+PRINT:rbviprion2cpuav:AVERAGE:"RBVIPRION2 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbviprion2cpumax:MAX:"RBVIPRION2 MAX CPU\:%8.2lf%s"  \
+PRINT:rbviprion2memusedpercentageav:AVERAGE:"RBVIPRION2 AVERAGE MEMORY \:%8.2lf%s" \
+PRINT:rbviprion2memusedpercentagemax:MAX:"RBVIPRION2 PEAK MEMORY \:%8.2lf%s" \
+PRINT:rbpfrfw1cpuav:AVERAGE:"RBPFRFW1 AVERAGE CPU\:%8.2lf%s" \
+PRINT:rbpfrfw1cpuav:MAX:"RBPFRFW1 PEAK CPU\:%8.2lf%s" \
+PRINT:rbpfrfw1memusedpercentageav:AVERAGE:"RBPFRFW1 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbpfrfw1memusedpercentagemax:MAX:"RBPFRFW1 PEAK MEMORY\:%8.2lf%s" \
+PRINT:rbpfrfw2cpuav:AVERAGE:"RBPFRFW2 AVERAGE CPU\:%8.2lf%s" \
+PRINT:rbpfrfw2cpuav:MAX:"RBPFRFW2 PEAK CPU\:%8.2lf%s" \
+PRINT:rbpfrfw2memusedpercentageav:AVERAGE:"RBPFRFW2 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbpfrfw2memusedpercentagemax:MAX:"RBPFRFW2 PEAK MEMORY\:%8.2lf%s" \
+PRINT:rbprsg03cpuav:AVERAGE:"RBPRSG03 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbprsg03cpumax:MAX:"RBPRSG03 MAX CPU\:%8.2lf%s"  \
+PRINT:rbprsg03memav:AVERAGE:"RBPRSG03 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbprsg03memmax:MAX:"RBPRSG03 PEAK MEMORY\:%8.2lf%s" \
+PRINT:rbprsg04cpuav:AVERAGE:"RBPRSG04 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbprsg04cpumax:MAX:"RBPRSG04 MAX CPU\:%8.2lf%s"  \
+PRINT:rbprsg04memav:AVERAGE:"RBPRSG04 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbprsg04memmax:MAX:"RBPRSG04 PEAK MEMORY\:%8.2lf%s" \
+PRINT:rbprav03cpuav:AVERAGE:"RBPRAV03 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbprav03cpumax:MAX:"RBPRAV03 MAX CPU\:%8.2lf%s"  \
+PRINT:rbprav03memav:AVERAGE:"RBPRAV03 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbprav03memmax:MAX:"RBPRAV03 PEAK MEMORY\:%8.2lf%s" \
+PRINT:rbprav04cpuav:AVERAGE:"RBPRAV04 AVERAGE CPU\:%8.2lf%s"  \
+PRINT:rbprav04cpumax:MAX:"RBPRAV04 MAX CPU\:%8.2lf%s"  \
+PRINT:rbprav04memav:AVERAGE:"RBPRAV04 AVERAGE MEMORY\:%8.2lf%s" \
+PRINT:rbprav04memmax:MAX:"RBPRAV04 PEAK MEMORY\:%8.2lf%s" \
+PRINT:bgcbdgw2cpuav:AVERAGE:"BGBDGW2 AVERAGE CPU \:%8.2lf%s"  \
+PRINT:bgcbdgw2cpumax:MAX:"BGBDGW2 PEAK CPU \:%8.2lf%s"  \
+PRINT:bgcbdgw2memusepercentageav:AVERAGE:"BGBDGW2 AVERAGE MEMORY \:%8.2lf%s"  \
+PRINT:bgcbdgw2memusepercentagemax:MAX:"BGBDGW2 PEAK MEMORY \:%8.2lf%s"  \
